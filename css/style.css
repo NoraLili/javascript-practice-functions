@@ -1,0 +1,92 @@
+.sections,
+.section-title {
+    max-width: 90%;
+    margin: auto;
+}
+
+.section-title {
+    padding: 1rem 0rem 0rem 1rem;
+}
+
+.exercise {
+    display: grid;
+    border-radius: 3rem;
+    min-height: 8rem;
+    margin: 1rem 0;
+}
+
+.color-basics {
+    background-color: rgb(189, 205, 214);
+}
+
+@media (min-width: 576px) {
+    .exercise {
+        grid-template-columns: 1fr 4fr;
+    }
+}
+
+.exercise-title,
+.exercise-description,
+.solution-str,
+.center {
+    display: flex;
+    align-items: center;
+}
+
+.exercise-title {
+    font-size: 1.5rem;
+    margin: auto;
+}
+
+.exercise-description,
+.solution-str {
+    margin: 0;
+    padding: 0px 15px 0px 10px;
+    text-align: left;
+    overflow: hidden;
+}
+
+.button {
+    margin: auto;
+    color: hsl(0, 0%, 0%);
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 1px solid hsla(0, 0%, 0%);
+    box-shadow: 3px 5px 6px 1px hsla(0, 0%, 0%), 0.5;
+    cursor: pointer;
+    background-color: rgb(238, 233, 218);
+}
+
+.button:hover {
+    background-color: rgb(96, 150, 180);
+}
+
+.button:active {
+    color: hsl(0, 0%, 100%);
+    background-color: rgb(96, 150, 180);
+}
+
+.solution-str {
+    font-style: italic;
+}
+
+@media (max-width: 575.98px) {
+
+    .exercise-title,
+    .solution-button-div {
+        padding: 15px 0px 0px 0px;
+    }
+
+    .exercise-description {
+        padding: 15px 15px 0px 15px;
+        text-align: justify;
+    }
+
+    .solution-str {
+        padding: 15px;
+        text-align: justify;
+    }
+}
