@@ -95,11 +95,11 @@ function printIsPalindrome() {
 
 // Exercise 4
 function createPassword(passwordLength) {
-    let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     let password = ``;
     for (let i = 0; i < passwordLength; i++) {
-        let randomIndex = Math.floor(Math.random() * charset.length);
-        let passwordChr = charset[randomIndex];
+        let randomIndex = Math.floor(Math.random() * charSet.length);
+        let passwordChr = charSet[randomIndex];
         password += passwordChr;
     }
     return password;
@@ -150,4 +150,99 @@ function printIsDivisible() {
     let result = `Your numbers are: ${firstRequestedNumber} and ${secondRequestedNumber}, they are ${isDivisible(firstRequestedNumber, secondRequestedNumber)} with each other.`;
     console.log(result);
     document.getElementById(`solution-5`).innerHTML = result;
+}
+
+// Exercise 6
+function createWeeklyLotteryFive() {
+    let lotteryFiveNumbers = [];
+    let i = 0;
+    while (lotteryFiveNumbers.length < 5) {
+        let randomNumber = Math.floor(Math.random() * 90 + 1);
+        if (!lotteryFiveNumbers.includes(randomNumber)) {
+            lotteryFiveNumbers.push(randomNumber);
+        }
+    }
+
+    return lotteryFiveNumbers.join(`, `);
+}
+
+function printWeeklyLotteryFive() {
+    let result = `The 5 lottery numbers for this week are: ${createWeeklyLotteryFive()}.`;
+    document.getElementById(`solution-6`).innerHTML = result;
+}
+
+// Exercise 7
+function createLotterySix() {
+    let lotterySixNumbers = [];
+    while (lotterySixNumbers.length < 6) {
+        let randomNumber = Math.floor(Math.random() * 45 + 1);
+        if (!lotterySixNumbers.includes(randomNumber)) {
+            lotterySixNumbers.push(randomNumber);
+        }
+    }
+    return lotterySixNumbers.join(`, `);
+}
+
+function printYearlyLotterySix() {
+    let yearlyNumbers = ``;
+    for (let i = 0; i < 52; i++) {
+        let result = `Week ${i + 1}: ${createLotterySix()}. <br>`;
+        yearlyNumbers += result;
+    }
+    document.getElementById(`solution-7`).innerHTML = `The 6 lottery numbers for each week are: <br>${yearlyNumbers}`;
+}
+
+// Exercise 8
+function calculatePercentageOfVowels(text) {
+    let charSet = [`a`, `e`, `i`, `o`, `u`];
+    let cleanText = text.replace(/[^a-zA-z0-9]/g, ``).toLowerCase().split(``);
+    let counter = 0;
+    for (let i = 0; i < cleanText.length; i++) {
+        if (charSet.includes(cleanText[i])) {
+            counter++;
+        };
+    }
+    console.log(counter);
+    let persentage = counter / cleanText.length * 100;
+    return persentage;
+}
+
+function printPercentageOfVowels() {
+    let requestedText = prompt(`Please write your text here!`);
+    let result = `The percentage of vowels in your text are: ${calculatePercentageOfVowels(requestedText)}%.`;
+    document.getElementById(`solution-8`).innerHTML = result;
+}
+
+// Exercise 9
+function calculateHypotenuse(leg1, leg2) {
+    let hypotenuse = Math.sqrt(Math.pow(leg1, 2) + Math.pow(leg2, 2));
+    return hypotenuse;
+}
+
+function printHypotenuse() {
+    let firstRequestedNumber = Number(prompt(`Please enter a number!`));
+    let secondRequestedNumber = Number(prompt(`Please enter another number!`));
+
+    if (!validateNumber(firstRequestedNumber) || firstRequestedNumber <= 0 || !validateNumber(secondRequestedNumber) || secondRequestedNumber <= 0) {
+        alert(`You enterred an incorrect data! Please enter a positive number!`);
+        return;
+    }
+
+    let result = `The two legs of the right-angled triangle are: ${firstRequestedNumber} and ${secondRequestedNumber}, the hypotenuse is: ${calculateHypotenuse(firstRequestedNumber, secondRequestedNumber)}.`;
+    document.getElementById(`solution-9`).innerHTML = result;
+}
+
+// Exercise 10
+function calculateTravelCost(consumption, gasolinePrice, lengthOfJurney) {
+    let travelCost = (consumption * gasolinePrice / 100) * lengthOfJurney;
+    return travelCost;
+}
+
+function printTravelCost() {
+    let consumption = Number(prompt(`Please enter the consumption of the car (liters per 100 km)!`));
+    let gasolinePrice = Number(prompt(`Please enter the price of gasoline (euro per liter)!`));
+    let lengthOfJurney = Number(prompt(`Please enter the length of the journey (km)!`));
+
+    let result = `The consumption of the car is: ${consumption} liter/100 km, the price of gasoline is: ${gasolinePrice} €/liter and the length of the journey is: ${lengthOfJurney} km. <br>The travel cost is: ${calculateTravelCost(consumption, gasolinePrice, lengthOfJurney)} €.`;
+    document.getElementById(`solution-10`).innerHTML = result;
 }
