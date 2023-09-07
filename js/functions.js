@@ -491,3 +491,111 @@ function printBmi() {
     let result = `Your Body Mass Index (BMI) is: ${bmi} , you are ${changeBmiToText(bmi)}.`;
     document.getElementById(`solution-15`).innerHTML = result;
 }
+
+// Exercise 16
+function calculateSleepTime(sleepTime) {
+    if (0 <= sleepTime && sleepTime <= 6) {
+        return `little`;
+    } else if (7 <= sleepTime && sleepTime <= 9) {
+        return `average`;
+    } else if (10 <= sleepTime && sleepTime <= 12) {
+        return `plenty`;
+    } else if (13 <= sleepTime && sleepTime <= 24) {
+        return `a lot of`;
+    }
+}
+
+function printSleepTime() {
+    let sleepTime = Number(prompt(`Please enter the average number of hours the user sleeps per day (as a whole number)!`));
+
+    if (!validateIntegerNumber(sleepTime) || sleepTime < 0) {
+        alert(`You enterred an incorrect data! Please enter an integer number greater than or equal to 0!`);
+        return;
+    }
+    let result = `You are sleeping ${sleepTime} hours, which is ${calculateSleepTime(sleepTime)}.`;
+    document.getElementById(`solution-16`).innerHTML = result;
+}
+
+// Exercise 17
+function calculateQuadraticEquationX1(a, b, c) {
+    let x1 = (-b + (Math.sqrt(Math.pow(b, 2) - 4 * a * c))) / 2 * a;
+    return x1;
+}
+
+function calculateQuadraticEquationX2(a, b, c) {
+    let x2 = (-b - (Math.sqrt(Math.pow(b, 2) - 4 * a * c))) / 2 * a;
+    return x2;
+}
+
+function printQuadraticEquation() {
+    let a = Number(prompt(`Please enter a number (a)!`));
+    let b = Number(prompt(`Please enter another number (b)!`));
+    let c = Number(prompt(`Please enter another number (c)!`));
+
+    if (!validateNumber(a) || !validateNumber(b) || !validateNumber(c)) {
+        alert(`You enterred an incorrect data! Please enter a number!`);
+        return;
+    }
+
+    let result = ``;
+    let discriminant = Math.pow(b, 2) - 4 * a * c;
+    console.log(discriminant);
+    if (a === 0 || discriminant < 0) {
+        alert(`You entered an incorrect data! 'a' cannot be equal to 0, and the discriminant of the equation cannot be a negative number!`);
+    } else {
+        result = `a = ${a}, b = ${b}, c = ${c} <br>
+    The results are: x1 = ${calculateQuadraticEquationX1(a, b, c)} and x2 = ${calculateQuadraticEquationX2(a, b, c)}.`;
+    }
+    document.getElementById(`solution-17`).innerHTML = result;
+};
+
+// Exercise 18
+function createCoinFlips() {
+    let coinFlips = [];
+    for (let i = 0; i < 3; i++) {
+        let randomSide = Math.floor(Math.random() * 2);
+        if (randomSide == 0) {
+            coinFlips.push(`heads`);
+        } else {
+            coinFlips.push(`tails`);
+        };
+    }
+    return coinFlips.join(`, `);
+}
+
+function printCoinFlips() {
+    let result = `The reasult of the coin flips are: ${createCoinFlips()}.`;
+    document.getElementById(`solution-18`).innerHTML = result;
+}
+
+// Exercise 19
+function calculateReward(dailyIncome) {
+    return dailyIncome / 100 * 5;
+}
+
+function printReward() {
+    let dailyIncome = Number(prompt(`Please enter your daily income (in euros)!`));
+
+    if (!validateNumber(dailyIncome) || dailyIncome < 0) {
+        alert(`You enterred an incorrect data! Please enter a positive number!`);
+        return;
+    }
+    let result = `Your daily income is: ${dailyIncome} €, your reward is: ${calculateReward(dailyIncome)} €.`;
+    document.getElementById(`solution-19`).innerHTML = result;
+}
+
+// Exercise 20
+function determineBirthPlace(birthPlace) {
+    if (birthPlace === `Budapest` || birthPlace === `Buda` || birthPlace === `Pest`) {
+        return `capital`;
+    } else {
+        return `countryside`;
+    };
+}
+
+function printBirthPlace() {
+    let birthPlace = prompt(`Please enter your place of birth!`);
+
+    let result = `Your place of birth is: ${birthPlace}, you were born in the ${determineBirthPlace(birthPlace)}.`;
+    document.getElementById(`solution-20`).innerHTML = result;
+}
