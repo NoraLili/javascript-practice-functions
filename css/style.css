@@ -8,15 +8,25 @@
     padding: 1rem 0rem 0rem 1rem;
 }
 
+.sections-sub-exercises {
+    max-width: 70%;
+    margin: auto;
+}
+
 .exercise {
     display: grid;
     border-radius: 3rem;
     min-height: 8rem;
     margin: 1rem 0;
+    padding: 0.5rem 0rem;
 }
 
 .color-basics {
-    background-color: rgb(189, 205, 214);
+    background-color: rgba(151, 197, 223, 0.8);
+}
+
+.color-sub-exercises {
+    background-color: rgba(85, 144, 177, 0.37);
 }
 
 @media (min-width: 576px) {
@@ -41,7 +51,7 @@
 .exercise-description,
 .solution-str {
     margin: 0;
-    padding: 0px 15px 0px 10px;
+    padding: 10px 15px 10px 10px;
     text-align: left;
     overflow: hidden;
 }
@@ -74,6 +84,11 @@
 }
 
 @media (max-width: 575.98px) {
+
+    .exercise,
+    .sections-sub-exercises {
+        max-width: 100%;
+    }
 
     .exercise-title,
     .solution-button-div {
